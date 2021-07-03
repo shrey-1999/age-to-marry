@@ -1,5 +1,7 @@
 import flask
-from flask import request
+from flask import Flask, render_template, request
+import joblib
+
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -9,7 +11,11 @@ CORS(app)
 # main index page route
 @app.route('/')
 def home():
-    from sklearn.externals import joblib
+	return(render_template("index.html"))
+
+
+@app.route('/predict',methods=['GET'])
+def predict():
     model = joblib.load('marriage_age_predict_model.ml')
     predicted_age_of_marriage = model.predict([[int(request.args['gender']),
                             int(request.args['religion']),
@@ -18,7 +24,7 @@ def home():
                             int(request.args['country']),
                             int(request.args['height_cms']),
                            ]])
-    return str(round(predicted_age_of_marriage[0],2))
+    return(str(round(predicted_age_of_marriage[0],2)))
 
 
 if __name__ == "__main__":
