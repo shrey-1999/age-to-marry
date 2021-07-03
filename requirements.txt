@@ -1,4 +1,4 @@
-sklearn.externals
+scikit-learn
 flask_cors
 Click==7.0
 Flask==1.1.1
