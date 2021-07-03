@@ -9,11 +9,6 @@ CORS(app)
 # main index page route
 @app.route('/')
 def home():
-    return '<h1>API is working.. </h1>'
-
-
-@app.route('/predict',methods=['GET'])
-def predict():
     from sklearn.externals import joblib
     model = joblib.load('marriage_age_predict_model.ml')
     predicted_age_of_marriage = model.predict([[int(request.args['gender']),
