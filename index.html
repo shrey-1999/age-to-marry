@@ -179,7 +179,7 @@
 	<script type="text/javascript">
 		$('#submit').click(function(event){    
 		  event.preventDefault();     
-		  var exist_response = $.ajax({type:"GET",url:"http://13.250.101.192/predict",data:"gender="+$('#gender').val()+"&height_cms="+$('#height_cms').val()+"&caste="+$('#caste').val()+"&religion="+$('#religion').val()+"&mother_tongue="+$('#mother_tongue').val()+"&country="+$('#country').val(),async: false}).responseText;
+		  var exist_response = $.ajax({type:"GET",url:"http://127.0.0.1:5000/predict",data:"gender="+$('#gender').val()+"&height_cms="+$('#height_cms').val()+"&caste="+$('#caste').val()+"&religion="+$('#religion').val()+"&mother_tongue="+$('#mother_tongue').val()+"&country="+$('#country').val(),async: false}).responseText;
 		  $('#output').text("Your Predicted Year of Marriage : "+ String(parseInt(exist_response.split(".")[0]) + parseInt($('#yob').val())));
 		});
 	</script>
